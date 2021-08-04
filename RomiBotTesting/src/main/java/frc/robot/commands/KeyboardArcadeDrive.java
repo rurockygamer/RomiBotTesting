@@ -38,9 +38,30 @@ public class KeyboardArcadeDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.KeyboardArcadeDrive(m_xaxisSpeedSupplier.get(), m_zaxisRotateSupplier.get());
+    m_drivetrain.KeyboardArcadeDrive(FBDirection(), LRDirection());
   }
 
+  public double FBDirection(){
+    switch(m_keystroke.getKeyChar()) {
+      case 'w':
+        return 1.0 * speedFactor;
+      case 's':
+        return -1.0 * speedFactor;
+      default:
+       return 0;
+     }
+  }
+
+  public double LRDirection(){
+    switch(m_keystroke.getKeyChar()) {
+      case 'a':
+        return 1.0 * speedFactor;
+      case 'd':
+        return -1.0 * speedFactor;
+      default:
+       return 0;
+     }
+  }
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}
