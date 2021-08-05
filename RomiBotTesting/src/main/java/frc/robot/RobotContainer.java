@@ -79,29 +79,27 @@ public class RobotContainer {
     m_chooser.addOption("Auto Routine Time", new AutonomousTime(m_drivetrain));
     SmartDashboard.putData(m_chooser);
 
-    public double FBDirection(){
-    switch(key.getKeyChar()) {
-      case 'w':
-        return 1.0 * speedFactor;
-      case 's':
-        return -1.0 * speedFactor;
-      default:
-       return 0;
-     }
-  }
+      public double FBDirection(){
+        switch(key.getKeyChar()) {
+          case 'w':
+            return 1.0 * speedFactor;
+          case 's':
+            return -1.0 * speedFactor;
+          default:
+          return 0;
+        }
+      } 
 
-  public double LRDirection(){
-    switch(key.getKeyChar()) {
-      case 'a':
-        return 1.0 * speedFactor;
-      case 'd':
-        return -1.0 * speedFactor;
-      default:
-       return 0;
-     }
-  }
-
-    
+    public double LRDirection(){
+      switch(key.getKeyChar()) {
+        case 'a':
+          return 1.0 * speedFactor;
+        case 'd':
+          return -1.0 * speedFactor;
+        default:
+        return 0;
+      }
+    } 
   }
 
 
@@ -124,7 +122,7 @@ public class RobotContainer {
    */
   public Command getArcadeDriveCommand() {
     return new ArcadeDrive(
-        m_drivetrain, () -> FBDirection(), () -> LRDirection());
-        //m_drivetrain, () -> -m_controller.getRawAxis(1), () -> m_controller.getRawAxis(2));
+        //m_drivetrain, () -> FBDirection(), () -> LRDirection());
+        m_drivetrain, () -> -m_controller.getRawAxis(1), () -> m_controller.getRawAxis(2));
   }
 }
